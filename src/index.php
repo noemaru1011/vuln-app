@@ -4,7 +4,7 @@
     <div class="p-4 mb-4 bg-light border rounded-3">
         <h1>Vulnerability Lab</h1>
         <p>下のボタンでデータベースを初期化できます。</p>
-        <p>最初に行ってください、またデータが壊れた時にも行ってください。</p>
+        <p>最初に行ってください、またXSSなどでページが見れない時などにも行ってください。</p>
 
         <div id="db-status">
             <button class="btn btn-danger"
