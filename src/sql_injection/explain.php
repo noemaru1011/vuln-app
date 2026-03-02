@@ -77,7 +77,7 @@ $sql = "SELECT * FROM USER WHERE USERNAME LIKE '%" . $name . "%'";
 
         <pre class="bg-light p-3 rounded"><code>
 $stmt = $pdo->prepare(
-  "SELECT * FROM users WHERE username LIKE :name"
+  "SELECT * FROM USER WHERE username LIKE :name"
 );
 $stmt->bindValue(':name', "%$name%");
 $stmt->execute();

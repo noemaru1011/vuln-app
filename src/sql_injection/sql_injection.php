@@ -8,7 +8,8 @@ require dirname(__DIR__) . "/includes/header.php";
         <div class="card">
             <h5 class="card-header">ワンクリックで入力フォームに代入</h5>
             <div class="card-body">
-                <div class="list-group shadow-sm">
+                <div class="list-group">
+                    <div class="list-group-item bg-dark text-white fw-bold small">まずは、簡単な体験</div>
                     <button type="button" class="list-group-item list-group-item-action py-3" onclick="copyToInput(`' OR 1=1 --`)">
                         <code class="text-danger fw-bold">' OR 1=1 --</code>
                         <div class="small text-muted">全件表示</div>
@@ -17,6 +18,7 @@ require dirname(__DIR__) . "/includes/header.php";
                         <code class="text-danger fw-bold">'</code>
                         <div class="small text-muted">SQLエラーを表示させる</div>
                     </button>
+                    <div class="list-group-item bg-dark text-white fw-bold small">そして、本格的な攻撃</div>
                     <button type="button" class="list-group-item list-group-item-action py-3" onclick="copyToInput(`' UNION SELECT 1, name FROM sqlite_master WHERE type='table' --`)">
                         <code class="text-danger fw-bold">' UNION SELECT...</code>
                         <div class="small text-muted">UNION攻撃で他のテーブルを確認</div>
@@ -84,8 +86,8 @@ require dirname(__DIR__) . "/includes/header.php";
         <div class="card mt-4">
             <h5 class="card-header">実行結果出力 (Database Output)</h5>
             <div class="card-body">
-                <div id="result" class="card-body bg-white font-monospace text-break" style="min-height: 200px;">
-                    <span class="text-muted small">ここに検索結果が表示されます...</span>
+                <div id="result" class="card-body text-break">
+                    <span class=" text-muted small">ここに検索結果が表示されます...</span>
                 </div>
             </div>
         </div>
