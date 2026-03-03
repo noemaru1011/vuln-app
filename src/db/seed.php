@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         }
 
         $db->commit();
-        echo "データベースの初期化とシードデータの挿入が完了しました！";
+        echo '<div class="alert alert-success">データベースの初期化と初期データの挿入が完了しました！</div>';
     } catch (Exception $e) {
         $db->rollBack();
         echo "初期化エラー: " . $e->getMessage();

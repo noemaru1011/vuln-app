@@ -45,7 +45,9 @@ require dirname(__DIR__) . "/includes/header.php";
                     hx-on="htmx:afterOnLoad: this.reset(); htmx.trigger('#messageTbl','reload')">
                     <div class="d-flex gap-2 align-items-end">
                         <div class="form-floating flex-grow-1">
-                            <input type="text" id="message-input" name="message" class="form-control">
+                            <input type="text" id="message-input" name="message"
+                                value="<?php echo htmlspecialchars($_GET['message'] ?? '', ENT_QUOTES); ?>"
+                                class="form-control">
                             <label for="message-input">メッセージ</label>
                         </div>
 

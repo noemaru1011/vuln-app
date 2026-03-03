@@ -1,25 +1,30 @@
-<?php include '../includes/header.php'; ?>
+<?php
+$title = "CSRF実行環境(準備画面)";
+require dirname(__DIR__) . "/includes/header.php";
+?>
 
-<div class="py-4">
-    <h2 class="mb-4">ログイン(SQLインジェクションでユーザー名とパスワードを特定してみてください)</h2>
 
-    <div id="message" class="mb-3"></div>
+<div class="card">
+    <h5 class="card-header">ログイン(SQLインジェクションでユーザー名とパスワードを特定してみてください)</h5>
+    <div class="card-body">
 
-    <form hx-post="../db/auth.php" hx-target="#message">
-        <div class="mb-3">
-            <label class="form-label">ユーザー名</label>
-            <input type="text" name="username" class="form-control w-50" required>
-        </div>
+        <form hx-post="../db/login.php" hx-target="#message">
+            <div class="form-floating flex-grow-1 mb-3">
+                <input type="text" id="user-name" name="username" class="form-control">
+                <label for="user-name">ユーザー名</label>
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">パスワード</label>
-            <input type="password" name="password" class="form-control w-50" required>
-        </div>
+            <div class="form-floating flex-grow-1 mb-3">
+                <input type="password" id="user-password" name="password" class="form-control">
+                <label for="user-password">パスワード</label>
+            </div>
 
-        <button type="submit" class="btn btn-primary">
-            ログイン
-        </button>
-    </form>
+            <button type="submit" class="btn btn-primary">
+                ログイン
+            </button>
+        </form>
+        <div id="message" class="mb-3"></div>
+    </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php require dirname(__DIR__) . "/includes/footer.php"; ?>

