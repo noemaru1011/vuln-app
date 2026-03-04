@@ -31,6 +31,8 @@
                         <a class="nav-link" href="../clickjacking/explain.php">クリックジャギング解説</a>
                         <a class="nav-link" href="../csrf/login.php?url=https://www.google.com/">リダイレクト系攻撃体験</a>
                         <a class="nav-link" href="../redirect/explain.php">リダイレクト系攻撃解説</a>
+                        <a class="nav-link" href="../mail/mail.php">メールヘッダインジェクション体験</a>
+                        <a class="nav-link" href="../mail/explain.php">メールヘッダインジェクション解説</a>
 
                     </div>
                 </div>
