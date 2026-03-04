@@ -25,12 +25,12 @@
                         <a class="nav-link" href="../sql_injection/explain.php">SQLインジェクション解説</a>
                         <a class="nav-link" href="../xss/xss.php">XSS体験</a>
                         <a class="nav-link" href="../xss/explain.php">XSS解説</a>
-                        <a class="nav-link" href="../csrf/login.php">CSRF体験</a>
+                        <a class="nav-link" href="../csrf/login.php?url=change_password.php">CSRF体験</a>
                         <a class="nav-link" href="../csrf/explain.php">CSRF解説</a>
                         <a class="nav-link" href="../clickjacking/clickjacking.php">クリックジャギング体験</a>
                         <a class="nav-link" href="../clickjacking/explain.php">クリックジャギング解説</a>
-                        <a class="nav-link" href="../clickjacking/clickjacking.php">オープンリダイレクト攻撃体験</a>
-                        <a class="nav-link" href="../clickjacking/explain.php">オープンリダイレクト攻撃解説</a>
+                        <a class="nav-link" href="../csrf/login.php?url=https://www.google.com/">リダイレクト系攻撃体験</a>
+                        <a class="nav-link" href="../clickjacking/explain.php">リダイレクト系攻撃解説</a>
 
                     </div>
                 </div>
