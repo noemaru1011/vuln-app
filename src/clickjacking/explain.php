@@ -2,7 +2,6 @@
 $title = "クリックジャッキング解説";
 require dirname(__DIR__) . "/includes/header.php";
 ?>
-
 <div class="card mb-4 border-danger">
     <h5 class="card-header bg-danger text-white">クリックジャッキングとは何か？</h5>
     <div class="card-body p-4">
@@ -24,23 +23,23 @@ require dirname(__DIR__) . "/includes/header.php";
                 <div class="card h-100 border-light bg-light">
                     <div class="card-body">
                         <h6>1. iframeによる埋め込み</h6>
-                        <p class="small"><code>&lt;iframe&gt;</code> タグを使うと、自分のサイトの中に他人のサイトを自由に埋め込むことができます。</p>
+                        <p class="small mb-0"><code>&lt;iframe&gt;</code> タグで他サイトを自分のページ内に埋め込める</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card h-100 border-light bg-light">
                     <div class="card-body">
-                        <h6>2. 透明化（CSS opacity）</h6>
-                        <p class="small">CSSの <code>opacity: 0;</code> を使うと、要素を完全に透明にできます。透明でも「当たり判定」は残ります。</p>
+                        <h6>2. 透明化</h6>
+                        <p class="small mb-0">CSSの <code>opacity: 0</code> で完全に透明にしても、クリック可能領域は残る</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card h-100 border-light bg-light">
                     <div class="card-body">
-                        <h6>3. 重なりの制御（z-index）</h6>
-                        <p class="small"><code>z-index</code> を使うと、透明な正規サイトを罠サイトの「手前」に配置し、クリックを横取りできます。</p>
+                        <h6>3. 重なりの制御</h6>
+                        <p class="small mb-0"><code>z-index</code> で透明な正規サイトを手前に配置し、クリックを横取り</p>
                     </div>
                 </div>
             </div>
@@ -48,65 +47,175 @@ require dirname(__DIR__) . "/includes/header.php";
     </div>
 </div>
 
-
-
-<div class="card mb-4 shadow-sm">
-    <h5 class="card-header">攻撃成立のステップ（おさらい）</h5>
+<div class="card mb-4">
+    <h5 class="card-header">攻撃成立のステップ</h5>
     <div class="card-body p-4">
-        <div class="ms-3">
-            <ol class="list-group list-group-numbered list-group-flush">
-                <li class="list-group-item">攻撃者が、ターゲットサイトを <code>iframe</code> で読み込んだ罠サイトを作る。</li>
-                <li class="list-group-item">CSSで <code>iframe</code> を完全に透明にし、罠ボタンの真上に重ねる。</li>
-                <li class="list-group-item">SNSなどでユーザーを騙して、罠サイトへ誘導する。</li>
-                <li class="list-group-item">ユーザーが罠サイトのボタンをクリックする。</li>
-                <li class="list-group-item">実際には透明な <code>iframe</code> 内のボタンが押され、意図しない操作が実行される。</li>
-            </ol>
+        <ol class="mb-3">
+            <li class="mb-2">攻撃者が、ターゲットサイトを <code>iframe</code> で読み込んだ罠サイトを作成</li>
+            <li class="mb-2">CSSで <code>iframe</code> を完全に透明にし、罠ボタンの真上に配置</li>
+            <li class="mb-2">SNSやメールでユーザーを罠サイトへ誘導</li>
+            <li class="mb-2">ユーザーが罠サイトのボタンをクリック</li>
+            <li class="mb-2">実際には透明な <code>iframe</code> 内のボタンが押され、意図しない操作が実行</li>
+        </ol>
+
+        <div class="alert alert-danger mb-0">
+            <strong>⚠️ 重要：</strong> ユーザーは正規サイトにログイン済みのため、クリックした操作がそのまま実行されてしまいます。
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <h5 class="card-header">攻撃の具体例</h5>
+    <div class="card-body p-4">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card h-100 border-danger">
+                    <div class="card-body">
+                        <h6 class="text-danger">罠サイトのコード例</h6>
+                        <pre class="bg-light p-2 rounded small"><code>&lt;style&gt;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+  }
+  .fake-button {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+  }
+&lt;/style&gt;
+
+&lt;button class="fake-button"&gt;
+  動画を再生
+&lt;/button&gt;
+&lt;iframe src="https://bank.com/delete-account"&gt;
+&lt;/iframe&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100 border-info">
+                    <div class="card-body">
+                        <h6 class="text-info">何が起きるか</h6>
+                        <ul class="small mb-0">
+                            <li>ユーザーには「動画を再生」ボタンが見える</li>
+                            <li>実際にはその上に透明なiframeが重なっている</li>
+                            <li>クリックすると、iframe内の「退会ボタン」が押される</li>
+                            <li>ユーザーの意図しない退会処理が実行される</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="card mb-5 border-success">
-    <h5 class="card-header bg-success text-white">正しい対策：クリックジャッキング防御</h5>
+    <h5 class="card-header bg-success text-white">正しい対策</h5>
     <div class="card-body p-4">
-        <h6>① X-Frame-Options ヘッダーの設定</h6>
+        
+        <h6>① X-Frame-Options ヘッダーの設定 <span class="badge bg-primary">推奨</span></h6>
         <p>
             サーバー側から「このサイトを <code>iframe</code> に埋め込むことを許可するか」をブラウザに指示します。
         </p>
-        <pre class="bg-light p-3 rounded"><code>
-// PHPでの設定例（すべての埋め込みを拒否）
-header('X-Frame-Options: DENY');
+        
+        <div class="row g-3 mt-2">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="small text-muted">DENY（完全拒否）</h6>
+                        <pre class="small mb-2"><code>header('X-Frame-Options: DENY');</code></pre>
+                        <p class="small mb-0">すべての埋め込みを拒否（最も安全）</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="small text-muted">SAMEORIGIN（同一オリジンのみ）</h6>
+                        <pre class="small mb-2"><code>header('X-Frame-Options: SAMEORIGIN');</code></pre>
+                        <p class="small mb-0">自サイト内のみ埋め込み許可</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-// 同じドメイン内のみ許可する場合
-header('X-Frame-Options: SAMEORIGIN');
-        </code></pre>
+        <div class="alert alert-success mt-3">
+            <h6 class="text-success">✅ どう防げるのか？</h6>
+            <p class="small mb-0">
+                ブラウザがこのヘッダーを検出すると、iframe内での表示を拒否します。攻撃者は透明な正規サイトを重ねることができなくなります。
+            </p>
+        </div>
 
         <hr>
 
-        <h6>② Content Security Policy (CSP) の利用</h6>
+        <h6>② Content Security Policy (CSP) <span class="badge bg-info">最推奨</span></h6>
         <p>
-            より柔軟で強力な対策として、<code>frame-ancestors</code> を使用します。
+            より柔軟で強力な対策として、<code>frame-ancestors</code> ディレクティブを使用します。
         </p>
-        <pre class="bg-light p-3 rounded"><code>
-// 自分のサイト以外への埋め込みを禁止する
+        <pre class="bg-light p-3 rounded"><code>// 自分のサイト以外への埋め込みを禁止
 header("Content-Security-Policy: frame-ancestors 'self'");
-        </code></pre>
+
+// 完全に禁止
+header("Content-Security-Policy: frame-ancestors 'none'");
+
+// 特定のドメインのみ許可
+header("Content-Security-Policy: frame-ancestors 'self' https://trusted.com");</code></pre>
+
+        <div class="alert alert-info mt-3">
+            <h6>💡 CSPの利点</h6>
+            <ul class="small mb-0">
+                <li>X-Frame-Optionsより柔軟（複数ドメイン指定可能）</li>
+                <li>モダンブラウザで広くサポート</li>
+                <li>他のセキュリティ設定も一緒に管理可能</li>
+            </ul>
+        </div>
 
         <hr>
 
-        <h6>③ フレームバスター（JavaScriptによる対策）</h6>
+        <h6>③ フレームバスター（JavaScript） <span class="badge bg-secondary">非推奨</span></h6>
         <p>
-            古いブラウザ向けに、自分がフレーム内に読み込まれたことを検知して、強制的にトップ画面へ遷移させるスクリプトです（現在は上記①②が推奨されます）。
+            自分がフレーム内に読み込まれたことを検知して、強制的にトップ画面へ遷移させる方法です。
         </p>
-        <pre class="bg-light p-3 rounded"><code>
-&lt;script&gt;
+        <pre class="bg-light p-3 rounded"><code>&lt;script&gt;
 if (top !== self) {
     top.location = self.location;
 }
-&lt;/script&gt;
-        </code></pre>
-        <p class="text-muted small">
-            ※ 根本的な解決には、サーバー側で <strong>X-Frame-Options</strong> または <strong>CSP</strong> を設定することが最も安全です。
-        </p>
+&lt;/script&gt;</code></pre>
+
+        <div class="alert alert-warning mt-3">
+            <h6>⚠️ JavaScriptの限界</h6>
+            <ul class="small mb-0">
+                <li>JavaScriptが無効化されていると機能しない</li>
+                <li><code>sandbox</code> 属性で無効化可能</li>
+                <li>サーバー側のヘッダー設定が確実</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h6>④ 補助的な対策</h6>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="small">重要操作の確認</h6>
+                        <p class="small mb-0">退会や購入など重要な操作には確認画面を挟む</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h6 class="small">CAPTCHA</h6>
+                        <p class="small mb-0">自動化された攻撃を防ぐ（補助的）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
