@@ -11,18 +11,28 @@
 
 <body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand bg-primary-subtle shadow-sm mb-4">
+        <nav class="navbar bg-primary-subtle shadow-sm mb-4">
             <div class="container">
-                <a class="navbar-brand fw-bold " href="../">ホーム</a>
-                <div class="navbar-nav">
-                    <a class="nav-link" href="../sql_injection/sql_injection.php">SQLインジェクション体験</a>
-                    <a class="nav-link" href="../sql_injection/explain.php">SQLインジェクション解説</a>
-                    <a class="nav-link" href="../xss/xss.php">XSS体験</a>
-                    <a class="nav-link" href="../xss/explain.php">XSS解説</a>
-                    <a class="nav-link" href="../csrf/login.php">CSRF体験(ログイン画面へ)</a>
-                    <a class="nav-link" href="../csrf/explain.php">CSRF解説</a>
-                    <a class="nav-link" href="../clickjacking/clickjacking.php">クリックジャギング体験</a>
-                    <a class="nav-link" href="../clickjacking/explain.php">クリックジャギング解説</a>
+                <a class="navbar-brand fw-bold" href="../">ホーム</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="../sql_injection/sql_injection.php">SQLインジェクション体験</a>
+                        <a class="nav-link" href="../sql_injection/explain.php">SQLインジェクション解説</a>
+                        <a class="nav-link" href="../xss/xss.php">XSS体験</a>
+                        <a class="nav-link" href="../xss/explain.php">XSS解説</a>
+                        <a class="nav-link" href="../csrf/login.php">CSRF体験</a>
+                        <a class="nav-link" href="../csrf/explain.php">CSRF解説</a>
+                        <a class="nav-link" href="../clickjacking/clickjacking.php">クリックジャギング体験</a>
+                        <a class="nav-link" href="../clickjacking/explain.php">クリックジャギング解説</a>
+                        <a class="nav-link" href="../clickjacking/clickjacking.php">オープンリダイレクト攻撃体験</a>
+                        <a class="nav-link" href="../clickjacking/explain.php">オープンリダイレクト攻撃解説</a>
+
+                    </div>
                 </div>
             </div>
         </nav>

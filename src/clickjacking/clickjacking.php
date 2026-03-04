@@ -24,7 +24,7 @@ require dirname(__DIR__) . "/includes/header.php";
     class="target-iframe"
     style="
     position: absolute;
-     top: -120px; left: 40px; 
+     top: -100px; left: 40px; 
      width: 100%; 
      height: 100%; 
      z-index: 5; 
